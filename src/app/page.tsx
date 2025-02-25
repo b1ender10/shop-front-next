@@ -1,4 +1,5 @@
 "use client"
+import Post from "@/components/Post/Post";
 import styles from "./page.module.css";
 import { useEffect, useState } from "react";
 
@@ -109,10 +110,7 @@ export default function Home() {
         <h1>Posts</h1>
         <div className={styles.posts_table}>
           {posts?.map((post: any) => (
-            <div key={post?.post_id} className={styles.posts_table_row}>
-              <h2>{post?.title}</h2>
-              <p>{post?.content}</p>
-            </div>
+            <Post key={post?.post_id} post={post} />
           ))}
         </div>
       </div>
