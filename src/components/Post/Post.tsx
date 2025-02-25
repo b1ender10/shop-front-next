@@ -1,4 +1,5 @@
 import React, { use, useEffect } from "react";
+import styles from "./styles.module.css";
 
 interface PostProps {
     post: any;
@@ -17,20 +18,18 @@ const Post:React.FC<PostProps> = ({post}) => {
     }, [post]);
 
     return (
-        <div>
+        <div className={styles.post}>
             <h2>{post?.title}</h2>
             <p>{post?.content}</p>
-            {comments?.length > 0 && <h3>Comments</h3>}
-            <div>
+            <div className={styles.comments}>
+                {comments?.length > 0 && <h4>Comments</h4>}
                 {comments?.map((comment: any) => (
-                    <div key={comment?.comment_id}>
+                    <div className={styles.comment} key={comment?.comment_id}>
                         <p>{comment?.user_id}</p>
                         <p>{comment?.content}</p>
                     </div>
                 ))}
             </div>
-
-            <hr/>
         </div>
     )
 }

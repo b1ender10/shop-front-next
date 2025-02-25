@@ -1,0 +1,9 @@
+.page {
+    padding: 50px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+}
