@@ -2,6 +2,7 @@
 import Post from "@/components/Post/Post";
 import styles from "./page.module.css";
 import { useEffect, useState } from "react";
+import Layout from "@/components/Layout/Layout";
 
 export default function Home() {
   
@@ -42,26 +43,26 @@ export default function Home() {
   }
 
   return (
-    <div className={styles.page}>
+    <Layout>
+      <div className={styles.page}>
+        <div>
+          <h1 className={styles.title}>Write new post</h1>
+          <form onSubmit={addPost} className={styles.form}>
+            <input type="text" name="title" placeholder="Title" required />
+            <textarea name="content" placeholder="Content" required></textarea>
+            <button type="submit">Post</button>
+          </form>
+        </div>
 
-      <div>
-        <h1>Write new post</h1>
-        <form onSubmit={addPost} className={styles.form}>
-          <input type="text" name="title" placeholder="Title" />
-          <textarea name="content" placeholder="Content"></textarea>
-          <button type="submit">Post</button>
-        </form>
-      </div>
-
-      <div>
-        <h1>Posts</h1>
-        <div className={styles.posts_table}>
-          {posts?.map((post: any) => (
-            <Post key={post?.post_id} post={post} />
-          ))}
+        <div>
+          <h1 className={styles.title}>Posts</h1>
+          <div className={styles.posts_table}>
+            {posts?.map((post: any) => (
+              <Post key={post?.post_id} post={post} />
+            ))}
+          </div>
         </div>
       </div>
-
-    </div>
+    </Layout>
   );
 }
